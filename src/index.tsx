@@ -1,10 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './views/Popup/App'
+import { LocalStorageProvider } from 'components/LocalStorageProvider';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './views/Popup/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LocalStorageProvider>
+      <App />
+    </LocalStorageProvider>
   </React.StrictMode>,
   document.getElementById('root')
-); 
+);

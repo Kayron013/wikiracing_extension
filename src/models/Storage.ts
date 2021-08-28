@@ -1,16 +1,19 @@
-export type LocalStorage = {
-  isPlaying: boolean;
-  startedAt: number;
-  hopCount: number;
-  lastRun: {
-    time: number;
-    hops: number;
-  };
-};
+import { Article, WikiRun } from './Wiki';
 
-export type SyncStorage = {
-  record: {
-    time: number;
-    hops: number;
+export interface LocalStorage {
+  isPlaying: boolean;
+  currentGame: {
+    startTime: number;
+    origin: Article;
+    destination: Article;
+    stops: Article[];
   };
-};
+  lastRun: WikiRun | null;
+}
+
+export interface SyncStorage {
+  recordRuns: {
+    fewestHops: WikiRun | null;
+    fastestTime: WikiRun | null;
+  };
+}

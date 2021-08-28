@@ -4,5 +4,5 @@ export const dev = {} as any;
 (window as any).dev = dev;
 
 dev.printLocalStorage = async () => {
-  console.log(await getLocalStorage());
+  console.debug(await getLocalStorage());
 };

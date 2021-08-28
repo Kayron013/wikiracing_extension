@@ -1,25 +1,13 @@
 import React from 'react';
 import './App.css';
 import { useLocalStorage } from 'utils/hooks/useLocalStorage';
-import { startGame, endGame } from 'utils/chrome/events';
+import { PlayingScreen } from './PlayingScreen';
+import { StandbyScreen } from './StandbyScreen';
 
 function App() {
-  const [localStorage] = useLocalStorage();
+  const localStorage = useLocalStorage();
 
-  const handleClick = (isStarting: boolean) => {
-    isStarting ? startGame() : endGame();
-  };
-
-  return (
-    <div className='App'>
-      <h2>Wiki Race</h2>
-      {localStorage.isPlaying ? (
-        <button onClick={() => handleClick(false)}>Stop</button>
-      ) : (
-        <button onClick={() => handleClick(true)}>Start</button>
-      )}
-    </div>
-  );
+  return <div className='App'>{localStorage.isPlaying ? <PlayingScreen /> : <StandbyScreen />}</div>;
 }
 
 export default App;
